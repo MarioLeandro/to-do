@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {TodoList} from './components/TodoList';
 import {TodoForm} from './components/TodoForm';
 //styles
@@ -12,6 +12,16 @@ interface Todo {
 
 function App() {
   const[todos, setTodos] = useState<Todo[]>([]);
+
+  async function fetchData () {
+    const response = await fetch('https://2d4b2c7b3192.ngrok.io/listTodo');
+    const data = await response.json();
+    setTodos(data);
+  }
+  
+  useEffect(() => {
+    fetchData();
+  }, [])
 
   function toggleTodo (selectedTodo: Todo) {
     const newTodos = todos.map((todo) => {

@@ -15,13 +15,15 @@ export function TodoList ({todos, toggleTodo}: TodoListProps) {
     return (
         <List>
             {todos.map((todo) => (
-                <div>
-                    <label style={{textDecoration: todo.isCompleted ? 'line-through' : undefined}}>
-                        <input type="checkbox" id="checkbox" checked={todo.isCompleted} onChange={() => toggleTodo(todo)}/>
-                        {todo.description}
-                    </label>
+                !todo.isCompleted ? (
+                    <div>
+                        <label style={{textDecoration: todo.isCompleted ? 'line-through' : undefined}}>
+                            <input type="checkbox" id="checkbox" checked={todo.isCompleted} onChange={() => toggleTodo(todo)}/>
+                            {todo.description}
+                        </label>
                     <br/>
-                </div>               
+                    </div>   
+                ) : undefined              
             ))
             }
         </List>
