@@ -17,6 +17,10 @@ export function TodoForm ({addTodo}: TodoFormProps) {
     function handleSubmit (e: FormEvent<HTMLButtonElement>) {
         e.preventDefault();
         addTodo(newTodo);
+        api.post("/createTodo",{
+            description: newTodo,
+            isCompleted: false
+        });
         SetNewTodo("");
     }
     
