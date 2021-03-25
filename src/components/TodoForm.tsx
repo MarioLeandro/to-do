@@ -1,5 +1,6 @@
 import React, { ChangeEvent, FormEvent, useState } from 'react';
 import { Input } from '../styles/TodoForm.styles';
+import api from './../api';
 
 
 interface TodoFormProps {
@@ -18,7 +19,12 @@ export function TodoForm ({addTodo}: TodoFormProps) {
         addTodo(newTodo);
         SetNewTodo("");
     }
-
+    
+    function postData(description : string){
+        api.post("/createTodo",{
+            description
+      });
+    }
     return (
         <Input>
             <form action={`https://2d4b2c7b3192.ngrok.io/createTodo`}  method="POST">
