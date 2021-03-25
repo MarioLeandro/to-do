@@ -18,8 +18,7 @@ export function TodoForm ({addTodo}: TodoFormProps) {
         e.preventDefault();
         addTodo(newTodo);
         api.post("/createTodo",{
-            description: newTodo,
-            isCompleted: false
+            description: newTodo
         });
         SetNewTodo("");
     }
