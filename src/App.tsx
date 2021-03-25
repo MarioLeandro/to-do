@@ -39,8 +39,10 @@ function App() {
   function addTodo (newTodo: string) {
     if (todos.length < 11) {
       newTodo.trim() !== "" && setTodos([...todos, {description: newTodo, isCompleted: false}]);
+      return true;
     } else {
       alert("Limite de To-Do's atingido");
+      return false;
     }
   }
 

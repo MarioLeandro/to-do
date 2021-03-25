@@ -4,7 +4,7 @@ import api from './../api';
 
 
 interface TodoFormProps {
-    addTodo: (newTodo: string) => void;
+    addTodo: (newTodo: string) => boolean;
 }
 
 export function TodoForm ({addTodo}: TodoFormProps) {
@@ -16,18 +16,14 @@ export function TodoForm ({addTodo}: TodoFormProps) {
 
     function handleSubmit (e: FormEvent<HTMLButtonElement>) {
         e.preventDefault();
-        addTodo(newTodo);
-        api.post("/createTodo",{
-            description: newTodo
-        });
+        addTodo(newTodo) === true && (
+            api.post("/createTodo",{
+                description: newTodo
+            })
+        ); 
         SetNewTodo("");
     }
-    
-    function postData(description : string){
-        api.post("/createTodo",{
-            description
-      });
-    }
+
     return (
         <Input>
             <form action={`https://2d4b2c7b3192.ngrok.io/createTodo`}  method="POST">
