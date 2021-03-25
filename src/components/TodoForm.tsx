@@ -21,8 +21,8 @@ export function TodoForm ({addTodo}: TodoFormProps) {
 
     return (
         <Input>
-            <form>
-                <input type="text" value={newTodo} onChange={handleChange}/>
+            <form action={`https://2d4b2c7b3192.ngrok.io/createTodo`}  method="POST">
+                <input name="description" type="text" value={newTodo} onChange={handleChange} />
                 <button type="submit" onClick={handleSubmit}>Add To-Do</button>
             </form>
         </Input>
