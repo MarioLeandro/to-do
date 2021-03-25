@@ -1,4 +1,6 @@
 import React, { ChangeEvent, FormEvent, useState } from 'react';
+import { Input } from '../styles/TodoForm.styles';
+
 
 interface TodoFormProps {
     addTodo: (newTodo: string) => void;
@@ -18,11 +20,11 @@ export function TodoForm ({addTodo}: TodoFormProps) {
     }
 
     return (
-        <div>
-            <form action="">
+        <Input>
+            <form>
                 <input type="text" value={newTodo} onChange={handleChange}/>
                 <button type="submit" onClick={handleSubmit}>Add To-Do</button>
             </form>
-        </div>
+        </Input>
     );
 }

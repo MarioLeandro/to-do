@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import {TodoList} from './components/TodoList';
 import {TodoForm} from './components/TodoForm';
+//styles
+import { GlobalStyle } from './App.styles';
 
 
 interface Todo {
@@ -25,14 +27,19 @@ function App() {
   }
 
   function addTodo (newTodo: string) {
-    newTodo.trim() !== "" && setTodos([...todos, {description: newTodo, isCompleted: false}]);
+    if (todos.length < 11) {
+      newTodo.trim() !== "" && setTodos([...todos, {description: newTodo, isCompleted: false}]);
+    } else {
+      alert("Limite de To-Do's atingido");
+    }
   }
 
   return (
-    <div className="App">
-      <TodoList todos={todos} toggleTodo={toggleTodo}/>
+    <>
+    <GlobalStyle/>
       <TodoForm addTodo={addTodo}/>
-    </div>
+      <TodoList todos={todos} toggleTodo={toggleTodo}/>
+    </>
   );
 }
 
